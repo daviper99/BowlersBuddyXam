@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:viewModel="clr-namespace:BowlersBuddyXam.ViewModel;assembly=BowlersBuddyXam"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resources="clr-namespace:BowlersBuddyXam.Resources;assembly=BowlersBuddyXam"
+             x:Class="BowlersBuddyXam.Controls.StackLayoutButton">
+  
+  <Image x:Name="ctrlIcon" Source="{Binding Icon}" />
+  <Label x:Name="ctrlText" Text="{Binding Title}" HorizontalOptions="Center" LineBreakMode="NoWrap" FontSize="Small"
+         TextColor="{x:Static resources:ColorResources.ListTitle}" />
+
+</StackLayout>
