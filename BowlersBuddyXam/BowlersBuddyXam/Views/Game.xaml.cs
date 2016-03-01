@@ -7,7 +7,7 @@ namespace BowlersBuddyXam.Views
         public Game()
         {
             InitializeComponent();
-            BindingContext = "{Binding Source={StaticResource Locator}, Path=GameViewModel}";
+            BindingContext = App.Locator.GameVM;
         }
     }
 }

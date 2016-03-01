@@ -80,6 +80,24 @@ namespace BowlersBuddyXam.Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Equipment.
+        /// </summary>
+        internal static string Equipment {
+            get {
+                return ResourceManager.GetString("Equipment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Locations.
+        /// </summary>
+        internal static string Locations {
+            get {
+                return ResourceManager.GetString("Locations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Game.
         /// </summary>
         internal static string NewGame {

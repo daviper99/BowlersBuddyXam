@@ -10,6 +10,8 @@ namespace BowlersBuddyXam
     {
         // Database connection
         private static SQLiteConnection _dbconn;
+
+        // View Model Locator
         private static ViewModelLocator _locator;
 
         public App()
@@ -25,18 +27,11 @@ namespace BowlersBuddyXam
             MainPage = new NavigationPage(new MainPage());
         }
 
-        public static SQLiteConnection conn
-        {
-            get { return _dbconn ?? (_dbconn = DependencyService.Get<ISQLite>().GetConnection()); }
-        }
+        // Get a database connection from device
+        public static SQLiteConnection conn => _dbconn ?? (_dbconn = DependencyService.Get<ISQLite>().GetConnection());
 
-        public static ViewModelLocator Locator
-        {
-            get
-            {
-                return _locator ?? (_locator = new ViewModelLocator());
-            }
-        }
+        // Setup the View Modal Locator
+        public static ViewModelLocator Locator => _locator ?? (_locator = new ViewModelLocator());
 
         protected override void OnStart()
         {

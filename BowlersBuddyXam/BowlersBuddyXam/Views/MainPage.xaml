@@ -2,16 +2,7 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:bowlersBuddyXam="clr-namespace:BowlersBuddyXam;assembly=BowlersBuddyXam"
-             xmlns:ctrl="clr-namespace:BowlersBuddyXam.Controls;assembly=BowlersBuddyXam"
-             xmlns:viewModel="clr-namespace:BowlersBuddyXam.ViewModel;assembly=BowlersBuddyXam"
              x:Class="BowlersBuddyXam.Views.MainPage">
-    <!--
-  <Application.Resources>
-    <viewModel:ViewModelLocator xmlns:vm="clr-namespace:BowlersBuddyXam"
-                         x:Key="Locator" />
-  </Application.Resources>
-  -->
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -31,12 +22,12 @@
             </Grid.RowDefinitions>
             <!--Top row of main buttons go here -->
             <!--
-      <ctrl:StackLayoutButton x:Name="NewSeriesIcon" ctrl:TextControl="" ctrlIcon="dddd" ctrlText="New Series"  Tapped="OnButtonTapped"/>
+      <ctrl:StackLayoutButton x:Name="NewSeriesButton" ctrl:TextControl="{Binding NewSeriesLocalized}" ctrlIcon="dddd" Tapped="{Binding NewSeriesCommand}"/>
       -->
 
 
-            <Button Grid.Row="0" Grid.Column="0" Text="{Binding ClickCountFormatted}" Command="{Binding IncrementCommand}" />
-            <Button Grid.Row="0" Grid.Column="1" Text="New Game" Command="{Binding IncrementCommand}" />
+            <Button Grid.Row="0" Grid.Column="0" Text="{Binding NewSeriesLocalized}" Command="{Binding NewSeriesCommand}" />
+            <Button Grid.Row="0" Grid.Column="1" Text="{Binding NewGameLocalized}" Command="{Binding NewGameCommand}" />
 
 
         </Grid>
@@ -51,10 +42,10 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <!--Bottom two rows of buttons go here -->
-            <Button Grid.Row="0" Grid.Column="0" Text="Locations" />
-            <Button Grid.Row="0" Grid.Column="1" Text="Equipment" />
-            <Button Grid.Row="1" Grid.Column="2" Text="Settings" />
+            <!--Bottom two rows of buttons go here (6 max)-->
+            <Button Grid.Row="0" Grid.Column="0" Text="{Binding LocationsLocalized}" Command="{Binding LocationsCommand}" />
+            <Button Grid.Row="0" Grid.Column="1" Text="{Binding EquipmentLocalized}" Command="{Binding EquipmentCommand}" />
+            <Button Grid.Row="1" Grid.Column="2" Text="{Binding SettingsLocalized}" Command="{Binding SettingsCommand}" />
 
         </Grid>
     </Grid>

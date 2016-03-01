@@ -1,172 +1,75 @@
 using System.ComponentModel;
-using System.IO;
-using System.Windows.Input;
+using BowlersBuddyXam.Resource;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using Xamarin.Forms;
 
 namespace BowlersBuddyXam.ViewModel
 {
     /// <summary>
-    /// This class contains properties that the main View can data bind to.
-    /// <para>
-    /// Use the <strong>mvvminpc</strong> snippet to add bindable properties to this ViewModel.
-    /// </para>
-    /// <para>
-    /// You can also use Blend to data bind with the tool's support.
-    /// </para>
-    /// <para>
-    /// See http://www.galasoft.ch/mvvm
-    /// </para>
+    ///     This class contains properties that the main View can data bind to.
+    ///     <para>
+    ///         Use the <strong>mvvminpc</strong> snippet to add bindable properties to this ViewModel.
+    ///     </para>
+    ///     <para>
+    ///         You can also use Blend to data bind with the tool's support.
+    ///     </para>
+    ///     <para>
+    ///         See http://www.galasoft.ch/mvvm
+    ///     </para>
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
-        private string _analysis;
-        private string _homelbl;
-        private string _newGame;
-        private string _newSeries;
-        private string _settings;
+        private RelayCommand _newEquipmentCommand;
+        private RelayCommand _newGameCommand;
+        private RelayCommand _newLocationsCommand;
+        private RelayCommand _newSeriesCommand;
+        private RelayCommand _newSettingsCommand;
 
-        /// <summary>
-        /// Initializes a new instance of the MainViewModel class.
-        /// </summary>
-        public MainViewModel()
-        {
-            //NewSeriesCommand = new Command(StartNewSeries);
-            //NewGameCommand = new Command(StartNewGame);
-            //SettingsCommand = new Command(StartSettings);
-            //AnalysisCommand = new Command(StartAnalysis);
-        }
+        public RelayCommand NewSeriesCommand => _newSeriesCommand
+                                                ?? (_newSeriesCommand = OpenSeries());
 
-        public string NewSeries
-        {
-            get { return _newSeries; }
-            set
-            {
-                _newSeries = value;
-                //OnPropertyChanged("NewSeries");
-            }
-        }
+        public RelayCommand NewGameCommand => _newGameCommand
+                                              ?? (_newGameCommand = OpenGame());
 
-        public string NewGame
-        {
-            get { return _newGame; }
-            set
-            {
-                _newGame = value;
-                //OnPropertyChanged("NewGame");
-            }
-        }
+        public RelayCommand SettingsCommand => _newSettingsCommand
+                                               ?? (_newSettingsCommand = OpenSettings());
 
-        public string Settings
-        {
-            get { return _settings; }
-            set
-            {
-                _settings = value;
-                //OnPropertyChanged("Settings");
-            }
-        }
+        public RelayCommand LocationsCommand => _newLocationsCommand
+                                                ?? (_newLocationsCommand = OpenLocations());
 
-        public string Analysis
-        {
-            get { return _analysis; }
-            set
-            {
-                _analysis = value;
-                //OnPropertyChanged("Analysis");
-            }
-        }
-
-        public string HomeLbl
-        {
-            get { return _homelbl; }
-            set
-            {
-                _homelbl = value;
-                //OnPropertyChanged("HomeLbl");
-            }
-        }
-
-        public RelayCommand NewSeriesCommand { get; set; }
-        public RelayCommand NewGameCommand { get; set; }
-        public RelayCommand SettingsCommand { get; set; }
-        public RelayCommand AnalysisCommand { get; set; }
+        public RelayCommand EquipmentCommand => _newEquipmentCommand
+                                                ?? (_newEquipmentCommand = OpenEquipment());
 
 
-        // BEGIN SAMPLE CODE
-        private int _clickCount;
-        public const string ClickCountPropertyName = "ClickCount";
+        public RelayCommand OpenSeries() => new RelayCommand(() => { });
 
-        public RelayCommand IncrementCommand
-        {
-            get
-            {
-                return _incrementCommand
-                    ?? (_incrementCommand = new RelayCommand(
-                    () =>
-                    {
-                        ClickCount++;
-                    }));
-            }
-        }
+        public RelayCommand OpenGame() => new RelayCommand(() => { });
 
-        public string ClickCountFormatted
-        {
-            get
-            {
-                return string.Format("Click {0}", ClickCount);
-            }
-        }
+        public RelayCommand OpenSettings() => new RelayCommand(() => { });
 
-        private RelayCommand _incrementCommand;
+        public RelayCommand OpenLocations() => new RelayCommand(() => { });
 
-        public int ClickCount
-        {
-            get
-            {
-                return _clickCount;
-            }
-            set
-            {
-                if (Set(() => ClickCount, ref _clickCount, value))
-                {
-                    RaisePropertyChanged(() => ClickCountFormatted);
-                }
-            }
-        }
+        public RelayCommand OpenEquipment() => new RelayCommand(() => { });
 
-        // END SAMPLE CODE
+        #region Localized Strings
 
-        public void StartNewSeries()
-        {
-            // Open a new series view
-        }
+        public string NewSeriesLocalized => LocalizedResources.NewSeries;
+        public string NewGameLocalized => LocalizedResources.NewGame;
+        public string SettingsLocalized => LocalizedResources.Settings;
+        public string LocationsLocalized => LocalizedResources.Locations;
+        public string EquipmentLocalized => LocalizedResources.Equipment;
 
-        public void StartNewGame()
-        {
-            // Open a new game view
-        }
-
-        public void StartSettings()
-        {
-            // Open the settings view
-        }
-
-        public void StartAnalysis()
-        {
-            // Open the analysis home view
-        }
+        #endregion
 
         #region INPC
 
-        //public void OnPropertyChanged(string propertyName)
-        //{
-        //    if (PropertyChanged != null)
-        //        PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        //}
+        public void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
 
-        //public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
         #endregion
     }
