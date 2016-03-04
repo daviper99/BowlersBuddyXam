@@ -1,7 +1,10 @@
 using System.ComponentModel;
+using System.Threading.Tasks;
 using BowlersBuddyXam.Resource;
+using BowlersBuddyXam.Views;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using Xamarin.Forms;
 
 namespace BowlersBuddyXam.ViewModel
 {
@@ -17,8 +20,10 @@ namespace BowlersBuddyXam.ViewModel
     ///         See http://www.galasoft.ch/mvvm
     ///     </para>
     /// </summary>
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel : BaseViewModel
     {
+        public INavigation Navigation { get; set; }
+
         private RelayCommand _newEquipmentCommand;
         private RelayCommand _newGameCommand;
         private RelayCommand _newLocationsCommand;
@@ -43,7 +48,7 @@ namespace BowlersBuddyXam.ViewModel
 
         public RelayCommand OpenSeries() => new RelayCommand(() => { });
 
-        public RelayCommand OpenGame() => new RelayCommand(() => { });
+        public RelayCommand OpenGame() => new RelayCommand(async() => await Navigation.PushAsync(new GameView()));
 
         public RelayCommand OpenSettings() => new RelayCommand(() => { });
 
@@ -61,16 +66,5 @@ namespace BowlersBuddyXam.ViewModel
 
         #endregion
 
-        #region INPC
-
-        public void OnPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        #endregion
     }
 }

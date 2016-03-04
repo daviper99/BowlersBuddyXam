@@ -7,7 +7,7 @@ namespace BowlersBuddyXam.Views
         public MainPage()
         {
             InitializeComponent();
-            BindingContext = App.Locator.MainVM;
+            BindingContext = App.Locator.MainBaseVm;
         }
     }
 }

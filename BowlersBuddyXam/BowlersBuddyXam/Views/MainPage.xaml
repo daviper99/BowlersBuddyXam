@@ -26,8 +26,8 @@
       -->
 
 
-            <Button Grid.Row="0" Grid.Column="0" Text="{Binding NewSeriesLocalized}" Command="{Binding NewSeriesCommand}" />
-            <Button Grid.Row="0" Grid.Column="1" Text="{Binding NewGameLocalized}" Command="{Binding NewGameCommand}" />
+            <Button Grid.Row="0" Grid.Column="0" Text="{Binding NewSeriesLocalized}" Command="{Binding NewSeriesCommand}" Navigation="{Binding Navigation}"/>
+            <Button Grid.Row="0" Grid.Column="1" Text="{Binding NewGameLocalized}" Command="{Binding NewGameCommand}" Navigation="{Binding Navigation}"/>
 
 
         </Grid>
@@ -43,9 +43,9 @@
             </Grid.RowDefinitions>
 
             <!--Bottom two rows of buttons go here (6 max)-->
-            <Button Grid.Row="0" Grid.Column="0" Text="{Binding LocationsLocalized}" Command="{Binding LocationsCommand}" />
-            <Button Grid.Row="0" Grid.Column="1" Text="{Binding EquipmentLocalized}" Command="{Binding EquipmentCommand}" />
-            <Button Grid.Row="1" Grid.Column="2" Text="{Binding SettingsLocalized}" Command="{Binding SettingsCommand}" />
+            <Button Grid.Row="0" Grid.Column="0" Text="{Binding LocationsLocalized}" Command="{Binding LocationsCommand}" Navigation="{Binding Navigation}"/>
+            <Button Grid.Row="0" Grid.Column="1" Text="{Binding EquipmentLocalized}" Command="{Binding EquipmentCommand}" Navigation="{Binding Navigation}"/>
+            <Button Grid.Row="1" Grid.Column="2" Text="{Binding SettingsLocalized}" Command="{Binding SettingsCommand}" Navigation="{Binding Navigation}"/>
 
         </Grid>
     </Grid>

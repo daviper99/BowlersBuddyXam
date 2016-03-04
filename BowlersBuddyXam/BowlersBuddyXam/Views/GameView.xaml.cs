@@ -2,12 +2,12 @@
 
 namespace BowlersBuddyXam.Views
 {
-    public partial class Game : ContentPage
+    public partial class GameView : ContentPage
     {
-        public Game()
+        public GameView()
         {
             InitializeComponent();
-            BindingContext = App.Locator.GameVM;
+            BindingContext = App.Locator.GameBaseVm;
         }
     }
 }

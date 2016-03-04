@@ -3,10 +3,11 @@
              xmlns:viewModel="clr-namespace:BowlersBuddyXam.ViewModel;assembly=BowlersBuddyXam"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:resources="clr-namespace:BowlersBuddyXam.Resources;assembly=BowlersBuddyXam"
+             xmlns:resource="clr-namespace:BowlersBuddyXam.Resource;assembly=BowlersBuddyXam"
              x:Class="BowlersBuddyXam.Controls.StackLayoutButton">
   
   <Image x:Name="ctrlIcon" Source="{Binding Icon}" />
   <Label x:Name="ctrlText" Text="{Binding Title}" HorizontalOptions="Center" LineBreakMode="NoWrap" FontSize="Small"
-         TextColor="{x:Static resources:ColorResources.ListTitle}" />
+         TextColor="{x:Static resource:ColorResources.ListTitle}" />
 
 </StackLayout>

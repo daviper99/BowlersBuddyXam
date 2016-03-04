@@ -22,8 +22,8 @@ namespace BowlersBuddyXam.ViewModel
         }
 
         // Public accessor for each ViewModel
-        public MainViewModel MainVM => ServiceLocator.Current.GetInstance<MainViewModel>();
-        public GameViewModel GameVM => ServiceLocator.Current.GetInstance<GameViewModel>();
+        public MainViewModel MainBaseVm => ServiceLocator.Current.GetInstance<MainViewModel>();
+        public GameViewModel GameBaseVm => ServiceLocator.Current.GetInstance<GameViewModel>();
 
         public static void Cleanup()
         {

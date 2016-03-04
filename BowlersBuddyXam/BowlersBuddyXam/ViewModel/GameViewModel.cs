@@ -1,29 +1,27 @@
-﻿using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Ioc;
-using Microsoft.Practices.ServiceLocation;
+﻿using System.Collections.ObjectModel;
+using BowlersBuddyXam.Controls;
 
 namespace BowlersBuddyXam.ViewModel
 {
-    public class GameViewModel : ViewModelBase
+    public class GameViewModel : BaseViewModel
     {
-        public GameViewModel() 
+        public ObservableCollection<Frame> GameFrames;
+
+        public GameViewModel()
         {
-            
+            GameFrames = new ObservableCollection<Frame>();
+            LoadFrames();
         }
 
-        #region INPC
-
-        public void OnPropertyChanged(string propertyName)
+        private void LoadFrames()
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            GameFrames.Clear();
+
+            GameFrames.Add(new Frame());
+
+            OnPropertyChanged("GameFrames");
+
+
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        #endregion
-
     }
 }

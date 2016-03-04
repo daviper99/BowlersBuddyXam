@@ -125,10 +125,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Renderers\CircleRenderer.cs" />
     <Compile Include="ISQLite_Android.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Renderers\RoundedBoxViewRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:BowlersBuddyXam.ViewModel;assembly=BowlersBuddyXam"
+             xmlns:ctrl="clr-namespace:BowlersBuddyXam.Controls;assembly=BowlersBuddyXam"
+             x:Class="BowlersBuddyXam.Views.GameView">
+
+    <StackLayout>
+        <ListView BindingContext="GameFrames">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Orientation="Horizontal" HeightRequest="70">
+
+                        <Grid ColumnSpacing="0" RowSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="70" />
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="70" />
+                            </Grid.ColumnDefinitions>
+
+                            <!-- frame box-->
+                            <ctrl:RoundedBoxView Grid.Row="1" Grid.Column="0" FillColor="Black" StrokeColor="White"
+                                                 StrokeThickness="6" CornerRadius="0" />
+
+                            <!-- frame number box-->
+                            <ctrl:RoundedBoxView Grid.Row="0" Grid.Column="0" FillColor="Black" StrokeColor="White"
+                                                 StrokeThickness="6" CornerRadius="0" />
+                            <Label Text="1" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" TextColor="White"
+                                   FontAttributes="Bold" />
+
+                            <Grid Grid.Row="1" Grid.Column="0" ColumnSpacing="0" RowSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <!-- second ball box-->
+                                <ctrl:RoundedBoxView Grid.Row="0" Grid.Column="1" FillColor="Black" StrokeColor="White"
+                                                     StrokeThickness="6" CornerRadius="0" />
+
+                                <ctrl:Circle Grid.Row="0" Grid.Column="0" FillColor="Black" StrokeThickness="6"
+                                             StrokeColor="Red"
+                                             IsVisible="True" />
+                                <Label x:Name="b1" Text="8" Grid.Row="0" Grid.Column="0"
+                                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="25" />
+                                <Label x:Name="b2" Text="/" Grid.Row="0" Grid.Column="1"
+                                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="25" />
+                                <Label x:Name="score" Text="Val" Grid.Row="1" Grid.ColumnSpan="2"
+                                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="25" />
+                            </Grid>
+                        </Grid>
+                    </StackLayout>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>

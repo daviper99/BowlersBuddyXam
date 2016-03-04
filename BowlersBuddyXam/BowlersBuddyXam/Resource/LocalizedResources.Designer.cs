@@ -98,7 +98,7 @@ namespace BowlersBuddyXam.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New Game.
+        ///   Looks up a localized string similar to New GameView.
         /// </summary>
         internal static string NewGame {
             get {
