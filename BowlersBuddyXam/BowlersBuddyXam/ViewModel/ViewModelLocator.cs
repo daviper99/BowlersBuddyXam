@@ -19,11 +19,13 @@ namespace BowlersBuddyXam.ViewModel
             // Provide a registration for each ViewModel
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<GameViewModel>();
+            SimpleIoc.Default.Register<FrameViewModel>();
         }
 
         // Public accessor for each ViewModel
         public MainViewModel MainBaseVm => ServiceLocator.Current.GetInstance<MainViewModel>();
         public GameViewModel GameBaseVm => ServiceLocator.Current.GetInstance<GameViewModel>();
+        public FrameViewModel FrameBaseVm => ServiceLocator.Current.GetInstance<FrameViewModel>();
 
         public static void Cleanup()
         {

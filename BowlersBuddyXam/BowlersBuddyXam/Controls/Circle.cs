@@ -13,7 +13,7 @@ namespace BowlersBuddyXam.Controls
         public static readonly BindableProperty StrokeThicknessProperty =
             BindableProperty.Create<Circle, double>(p => p.StrokeThickness, default(double));
 
-        public static readonly BindableProperty IsVisibleProperty =
+        public static readonly BindableProperty VisibleProperty =
             BindableProperty.Create<Circle, bool>(p => p.IsVisible, false);
 
         public Color FillColor
@@ -34,7 +34,7 @@ namespace BowlersBuddyXam.Controls
             set { SetValue(StrokeThicknessProperty, value); }
         }
 
-        public bool IsVisible
+        public bool Visible
         {
             get { return (bool) GetValue(IsVisibleProperty); }
             set { SetValue(IsVisibleProperty, value); }

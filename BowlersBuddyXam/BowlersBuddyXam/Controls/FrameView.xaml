@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:BowlersBuddyXam.ViewModel;assembly=BowlersBuddyXam"
+             xmlns:controls="clr-namespace:BowlersBuddyXam.Controls;assembly=BowlersBuddyXam"
+             x:Class="BowlersBuddyXam.Controls.FrameView">
+
+  <Grid ColumnSpacing="0" RowSpacing="0">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="{Binding NumberBoxHeight}" />
+      <RowDefinition Height="{Binding FrameHeight}" />
+    </Grid.RowDefinitions>
+
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="{Binding FrameWidth}" />
+    </Grid.ColumnDefinitions>
+
+    <!-- frame box-->
+    <controls:RoundedBoxView Grid.Row="1" Grid.Column="0" FillColor="Black" StrokeColor="White"
+                         StrokeThickness="6" CornerRadius="0" />
+
+    <!-- frame number box-->
+    <controls:RoundedBoxView Grid.Row="0" Grid.Column="0" FillColor="Black" StrokeColor="White"
+                         StrokeThickness="6" CornerRadius="0" />
+    <Label x:Name="FrameNumber" Text="{Binding FrameNumber}" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center"
+           VerticalTextAlignment="Center" TextColor="White"
+           FontAttributes="Bold" />
+
+    <Grid Grid.Row="1" Grid.Column="0" ColumnSpacing="0" RowSpacing="0">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+
+      <!-- second ball box-->
+      <controls:RoundedBoxView Grid.Row="0" Grid.Column="1" FillColor="Black" StrokeColor="White"
+                           StrokeThickness="6" CornerRadius="0" />
+
+      <controls:Circle Grid.Row="0" Grid.Column="0" FillColor="Black" StrokeThickness="6"
+                   StrokeColor="Red"
+                   IsVisible="{Binding SplitVisible}" />
+      <Label x:Name="b1" Text="{Binding BallOne}" Grid.Row="0" Grid.Column="0"
+             HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="{Binding FontSize}" />
+      <Label x:Name="b2" Text="{Binding BallTwo}" Grid.Row="0" Grid.Column="1"
+             HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="{Binding FontSize}" />
+      <Label x:Name="Score" Text="{Binding Score}" Grid.Row="1" Grid.ColumnSpan="2"
+             HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="{Binding FontSize}" />
+    </Grid>
+  </Grid>
+</ContentView>

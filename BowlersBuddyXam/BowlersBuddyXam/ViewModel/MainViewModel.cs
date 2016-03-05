@@ -20,7 +20,7 @@ namespace BowlersBuddyXam.ViewModel
     ///         See http://www.galasoft.ch/mvvm
     ///     </para>
     /// </summary>
-    public class MainViewModel : BaseViewModel
+    public class MainViewModel : ViewModelBase
     {
         public INavigation Navigation { get; set; }
 

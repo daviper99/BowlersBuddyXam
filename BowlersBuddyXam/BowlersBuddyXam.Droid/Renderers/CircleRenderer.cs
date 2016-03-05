@@ -19,7 +19,7 @@ namespace BowlersBuddyXam.Droid.Renderers
         {
             var circ = (Circle) Element;
 
-            if (circ.IsVisible)
+            if (circ.Visible)
             {
                 var rc = new Rect();
                 GetDrawingRect(rc);
