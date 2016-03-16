@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -10,38 +9,48 @@ namespace BowlersBuddyXam.Model
     internal class Game : INotifyPropertyChanged
     {
         private readonly SQLiteConnection _db = App.conn;
-
-        public ObservableCollection<Frame> Frames { get; private set; }
-        private int _gameid { get; set; }
         private tblGame _newGame;
+        private ObservableCollection<Frame> _frames { get; set; }
+        private int _gameid { get; set; }
 
-        public Game(int gameid)
+        public int GameScore
+        {
+            get { return _newGame.final_score; }
+            set{_newGame.final_score = value;}
+        }
+
+        public DateTime GameDate
+        {
+            get { return _newGame.game_date; }
+            set { _newGame.game_date = value; }
+        }
+
+
+        public bool GetGame(int gameid)
         {
             var _qry = new TableQuery<tblGame>(_db);
-
+            bool retval = false;
 
             _qry = from s in _db.Table<tblGame>()
-                   where s.game_id == gameid 
-                   select s;
+                where s.game_id == gameid
+                select s;
 
             if (_qry.Any())
             {
                 // Assign existing record to internal variable
                 _newGame = _qry.ElementAt(0);
                 _gameid = gameid;
-            }
-            else
-            {
-                // Build a new record
-                AddToDb();
+                retval = true;
             }
 
+            return retval;
         }
 
-        public Game()
+        public int NewGame()
         {
             // Build a new record
             AddToDb();
+            return _gameid;
         }
 
         ~Game()
@@ -52,37 +61,36 @@ namespace BowlersBuddyXam.Model
 
         private bool AddToDb()
         {
-            Helper<tblGame> helper = new Helper<tblGame>();
-            
+            var helper = new Helper<tblGame>();
+            var frame = new Frame();
+
 
             // Create new game record
             _newGame = new tblGame();
 
-             _gameid = helper.AddToTable(_newGame);
+            _gameid = helper.AddToTable(_newGame);
 
             if (_gameid > 0)
             {
+                _newGame.game_date = DateTime.Now;
+
                 // Create 9 normal frames
                 for (var i = 1; i < 10; i++)
                 {
-                    Frames.Insert(i, new Frame(2, i, _gameid));
+
+                    _frames.Insert(i, frame.NewFrame(2, i, _gameid));
                 }
 
                 // Add the tenth frame
-                Frames.Insert(10, new Frame(3, 10, _gameid));
+                _frames.Insert(10, frame.NewFrame(2, 10, _gameid));
             }
 
             return _gameid > 0 ? true : false;
-
         }
 
-        public bool RetrieveRecord(int gameId)
+        public Frame GetFrame(int index)
         {
-            var retVal = false;
-
-            // Load from database
-
-            return retVal;
+            return _frames[index - 1];
         }
 
         public bool UpdateToDb()
@@ -105,7 +113,7 @@ namespace BowlersBuddyXam.Model
             return helper.AddToTable(tsg);
         }
 
-         #region INPC
+        #region INPC
 
         public void OnPropertyChanged(string propertyName)
         {

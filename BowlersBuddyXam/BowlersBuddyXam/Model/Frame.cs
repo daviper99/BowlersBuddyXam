@@ -7,10 +7,14 @@ namespace BowlersBuddyXam.Model
     internal class Frame : INotifyPropertyChanged
     {
         private readonly SQLiteConnection _db = App.conn;
-        private readonly tblFrame _newFrame = new tblFrame();
-        private int _frameId;
+        private int _frameId { get; set; }
+        private tblFrame _newFrame = new tblFrame();
+        public int FrameId { get; set; }
+        private int _balls { get; set; }
+        private int _gameid { get; set; }
+        private int _frameNbr { get; set; }
 
-        public Frame(int nbrBalls, int frameNbr, int gameId)
+        public Frame NewFrame(int nbrBalls, int frameNbr, int gameId)
         {
             _balls = nbrBalls;
             _frameNbr = frameNbr;
@@ -32,11 +36,10 @@ namespace BowlersBuddyXam.Model
                 // Build a new record
                 AddToDb();
             }
-        }
+            _frameId = _newFrame.frame_nbr;
 
-        private int _balls { get; }
-        private int _gameid { get; }
-        private int _frameNbr { get; }
+            return this;
+        }
 
         ~Frame()
         {
@@ -48,20 +51,10 @@ namespace BowlersBuddyXam.Model
         {
             var helper = new Helper<tblFrame>();
 
-
             // Assign values to new frame record
             _newFrame.frame_nbr = _frameNbr;
             _newFrame.game_id = _gameid;
-
-            if (_balls == 3)
-            {
-                _newFrame.is_tenth = true;
-            }
-            else
-            {
-                _newFrame.is_tenth = false;
-            }
-
+            _newFrame.is_tenth = _balls == 3 ? true : false;
             _frameId = helper.AddToTable(_newFrame);
 
             return _frameId > 0 ? true : false;

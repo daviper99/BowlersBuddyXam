@@ -1,17 +1,65 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:BowlersBuddyXam.ViewModel;assembly=BowlersBuddyXam"
-             xmlns:ctrl="clr-namespace:BowlersBuddyXam.Controls;assembly=BowlersBuddyXam"
-             x:Class="BowlersBuddyXam.Views.GameView">
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ctrl="clr-namespace:BowlersBuddyXam.Controls;assembly=BowlersBuddyXam"
+    x:Class="BowlersBuddyXam.Views.GameView">
 
     <StackLayout>
         <ScrollView Orientation="Horizontal">
-          <StackLayout x:Name="FrameStack" Orientation="Horizontal" Padding="0" Spacing="0">
-            <!-- frame objects added in code behind -->
-          </StackLayout>
+            <StackLayout x:Name="FrameStack" Orientation="Horizontal" Padding="0" Spacing="0">
+                <!-- frame objects added in code behind -->
+            </StackLayout>
         </ScrollView>
+            <Grid RowSpacing="0" ColumnSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{Binding PinBoxSize}" />
+                <RowDefinition Height="{Binding PinBoxSize}" />
+                <RowDefinition Height="{Binding PinBoxSize}" />
+                <RowDefinition Height="{Binding PinBoxSize}" />
+                <RowDefinition Height="{Binding PinBoxSize}" />
+                <RowDefinition Height="{Binding PinBoxSize}" />
+                <RowDefinition Height="{Binding PinBoxSize}" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{Binding PinBoxSize}" />
+                <ColumnDefinition Width="{Binding PinBoxSize}" />
+                <ColumnDefinition Width="{Binding PinBoxSize}" />
+                <ColumnDefinition Width="{Binding PinBoxSize}" />
+                <ColumnDefinition Width="{Binding PinBoxSize}" />
+                <ColumnDefinition Width="{Binding PinBoxSize}" />
+                <ColumnDefinition Width="{Binding PinBoxSize}" />
+            </Grid.ColumnDefinitions>
+              
+            <ctrl:PinView x:Name="pin10" Grid.Row="0" Grid.Column="0" />
+            <ctrl:PinView x:Name="pin9" Grid.Row="0" Grid.Column="2" />
+            <ctrl:PinView x:Name="pin8" Grid.Row="0" Grid.Column="4" />
+            <ctrl:PinView x:Name="pin7" Grid.Row="0" Grid.Column="6" />
+            <ctrl:PinView x:Name="pin6" Grid.Row="2" Grid.Column="1" />
+            <ctrl:PinView x:Name="pin5" Grid.Row="2" Grid.Column="3" />
+            <ctrl:PinView x:Name="pin4" Grid.Row="2" Grid.Column="5" />
+            <ctrl:PinView x:Name="pin3" Grid.Row="4" Grid.Column="2" />
+            <ctrl:PinView x:Name="pin2" Grid.Row="4" Grid.Column="4" />
+            <ctrl:PinView x:Name="pin1" Grid.Row="6" Grid.Column="3" /> 
+        </Grid> 
     </StackLayout>
-
 </ContentPage>
+
+<!--            <ctrl:PinView Grid.Row="0" Grid.Column="0" />
+            <ctrl:Circle Grid.Row="0" Grid.Column="2" Solid="true" />
+            <ctrl:Circle Grid.Row="0" Grid.Column="4" Solid="false" />
+            <ctrl:Circle Grid.Row="0" Grid.Column="6" Solid="false" />
+            <ctrl:Circle Grid.Row="2" Grid.Column="1" Solid="false" />
+            <ctrl:Circle Grid.Row="2" Grid.Column="3" Solid="true" />
+            <ctrl:Circle Grid.Row="2" Grid.Column="5" Solid="false" />
+            <ctrl:Circle Grid.Row="4" Grid.Column="2" Solid="false" />
+            <ctrl:Circle Grid.Row="4" Grid.Column="4" Solid="false" />
+            <ctrl:Circle Grid.Row="6" Grid.Column="3" Solid="false" />
+                <BoxView IsVisible="false" WidthRequest="{Binding PinBoxSize}" />
+    <ctrl:PinView WidthRequest="{Binding PinBoxSize}" />
+    <BoxView IsVisible="false" WidthRequest="{Binding PinBoxSize}" />
+    <ctrl:PinView WidthRequest="{Binding PinBoxSize}" />
+    <BoxView IsVisible="false" WidthRequest="{Binding PinBoxSize}" />
+    <ctrl:PinView WidthRequest="{Binding PinBoxSize}" />
+-->

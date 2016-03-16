@@ -2,9 +2,9 @@
 
 namespace BowlersBuddyXam.Controls
 {
-    public partial class FrameView
+    public partial class TenthFrameView
     {
-        public FrameView()
+        public TenthFrameView()
         {
             InitializeComponent();
             BindingContext = new FrameViewModel();

@@ -3,7 +3,7 @@ using GalaSoft.MvvmLight;
 
 namespace BowlersBuddyXam.ViewModel
 {
-    public class FrameViewModel : ViewModelBase
+    public class FrameViewModel : MyViewModelBase
     {
         public const string ScorePropertyName = "Score";
         public const string BallOnePropertyName = "BallOne";
@@ -16,6 +16,8 @@ namespace BowlersBuddyXam.ViewModel
         public const string NumberBoxHeightPropertyName = "NumberBoxHeight";
         public const string FontSizePropertyName = "FontSize";
         public const string SplitVisiblePropertyName = "SplitVisible";
+        public const string B2SplitVisiblePropertyName = "B2SplitVisible";
+        public const string B3SplitVisiblePropertyName = "B3SplitVisible";
         public const string FrameIdPropertyName = "FrameId";
         public const string GameIdPropertyName = "GameId";
 
@@ -28,10 +30,12 @@ namespace BowlersBuddyXam.ViewModel
         private string _frameNbr;
         private int _frameWidth = 70;
         private int _gameId;
-        private bool _isTenth;
+        private bool _isTenth = false;
         private int _nbrBoxHeight = 20;
         private string _score;
-        private bool _splitVisible;
+        private bool _splitVisible = false;
+        private bool _b2splitVisible = false;
+        private bool _b3splitVisible = false;
 
         /// <summary>
         ///     Sets and gets the GameId property.
@@ -52,6 +56,8 @@ namespace BowlersBuddyXam.ViewModel
                 var oldValue = _gameId;
                 _gameId = value;
                 RaisePropertyChanged(GameIdPropertyName, oldValue, value, true);
+                OnPropertyChanged("GameId");
+
             }
         }
 
@@ -74,6 +80,8 @@ namespace BowlersBuddyXam.ViewModel
                 var oldValue = _frameId;
                 _frameId = value;
                 RaisePropertyChanged(FrameIdPropertyName, oldValue, value, true);
+                OnPropertyChanged("FrameId");
+
             }
         }
 
@@ -96,6 +104,8 @@ namespace BowlersBuddyXam.ViewModel
                 var oldValue = _score;
                 _score = value;
                 RaisePropertyChanged(ScorePropertyName, oldValue, value, true);
+                OnPropertyChanged("Score");
+
             }
         }
 
@@ -127,6 +137,8 @@ namespace BowlersBuddyXam.ViewModel
                     _b1 = value;
                 }
                 RaisePropertyChanged(BallOnePropertyName, oldValue, value, true);
+                OnPropertyChanged("BallOne");
+
             }
         }
 
@@ -158,6 +170,7 @@ namespace BowlersBuddyXam.ViewModel
                 }
 
                 RaisePropertyChanged(BallTwoPropertyName, oldValue, value, true);
+                OnPropertyChanged("BallTwo");
             }
         }
 
@@ -181,6 +194,8 @@ namespace BowlersBuddyXam.ViewModel
                 _b3 = value == "10" ? "X" : value;
 
                 RaisePropertyChanged(BallThreePropertyName, oldValue, value, true);
+                OnPropertyChanged("BallThree");
+
             }
         }
 
@@ -203,6 +218,8 @@ namespace BowlersBuddyXam.ViewModel
                 var oldValue = _frameNbr;
                 _frameNbr = value;
                 RaisePropertyChanged(FrameNumberPropertyName, oldValue, value, true);
+                OnPropertyChanged("FrameNumber");
+
             }
         }
 
@@ -225,6 +242,8 @@ namespace BowlersBuddyXam.ViewModel
                 var oldValue = _isTenth;
                 _isTenth = value;
                 RaisePropertyChanged(IsTenthPropertyName, oldValue, value, true);
+                OnPropertyChanged("IsTenth");
+
             }
         }
 
@@ -235,7 +254,10 @@ namespace BowlersBuddyXam.ViewModel
         /// </summary>
         public int FrameWidth
         {
-            get { return _frameWidth; }
+            get
+            {
+                return _frameWidth;
+            }
 
             set
             {
@@ -247,6 +269,8 @@ namespace BowlersBuddyXam.ViewModel
                 var oldValue = _frameWidth;
                 _frameWidth = value;
                 RaisePropertyChanged(FrameWidthPropertyName, oldValue, value, true);
+                OnPropertyChanged("FrameWidth");
+
             }
         }
 
@@ -269,6 +293,8 @@ namespace BowlersBuddyXam.ViewModel
                 var oldValue = _frameHeight;
                 _frameHeight = value;
                 RaisePropertyChanged(FrameHeightPropertyName, oldValue, value, true);
+                OnPropertyChanged("FrameHeight");
+
             }
         }
 
@@ -291,6 +317,8 @@ namespace BowlersBuddyXam.ViewModel
                 var oldValue = _nbrBoxHeight;
                 _nbrBoxHeight = value;
                 RaisePropertyChanged(NumberBoxHeightPropertyName, oldValue, value, true);
+                OnPropertyChanged("NumberBoxHeight");
+
             }
         }
 
@@ -313,6 +341,8 @@ namespace BowlersBuddyXam.ViewModel
                 var oldValue = _fontSize;
                 _fontSize = value;
                 RaisePropertyChanged(FontSizePropertyName, oldValue, value, true);
+                OnPropertyChanged("FontSize");
+
             }
         }
 
@@ -335,7 +365,58 @@ namespace BowlersBuddyXam.ViewModel
                 var oldValue = _splitVisible;
                 _splitVisible = value;
                 RaisePropertyChanged(SplitVisiblePropertyName, oldValue, value, true);
+                OnPropertyChanged("SplitVisible");
+
             }
         }
+
+        /// <summary>
+        ///     Sets and gets the B2SplitVisible property.
+        ///     Changes to that property's value raise the PropertyChanged event.
+        ///     This property's value is broadcasted by the MessengerInstance when it changes.
+        /// </summary>
+        public bool B2SplitVisible
+        {
+            get { return _b2splitVisible; }
+
+            set
+            {
+                if (_b2splitVisible == value)
+                {
+                    return;
+                }
+
+                var oldValue = _b2splitVisible;
+                _b2splitVisible = value;
+                RaisePropertyChanged(B2SplitVisiblePropertyName, oldValue, value, true);
+                OnPropertyChanged("B2SplitVisible");
+
+            }
+        }
+
+        /// <summary>
+        ///     Sets and gets the B3SplitVisible property.
+        ///     Changes to that property's value raise the PropertyChanged event.
+        ///     This property's value is broadcasted by the MessengerInstance when it changes.
+        /// </summary>
+        public bool B3SplitVisible
+        {
+            get { return _b3splitVisible; }
+
+            set
+            {
+                if (_b3splitVisible == value)
+                {
+                    return;
+                }
+
+                var oldValue = _b3splitVisible;
+                _b3splitVisible = value;
+                RaisePropertyChanged(B3SplitVisiblePropertyName, oldValue, value, true);
+                OnPropertyChanged("B3SplitVisible");
+
+            }
+        }
+
     }
 }

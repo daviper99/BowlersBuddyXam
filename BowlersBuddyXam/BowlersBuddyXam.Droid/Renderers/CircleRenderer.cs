@@ -15,6 +15,12 @@ namespace BowlersBuddyXam.Droid.Renderers
             SetWillNotDraw(false);
         }
 
+        protected override void OnElementChanged(ElementChangedEventArgs<View> e)
+        {
+            base.OnElementChanged(e);
+            Invalidate();
+        }
+
         public override void Draw(Canvas canvas)
         {
             var circ = (Circle) Element;
@@ -24,8 +30,8 @@ namespace BowlersBuddyXam.Droid.Renderers
                 var rc = new Rect();
                 GetDrawingRect(rc);
 
-                var interior = rc;
-                interior.Inset((int) circ.StrokeThickness, (int) circ.StrokeThickness);
+                    var interior = rc;
+                    interior.Inset((int) circ.StrokeThickness, (int) circ.StrokeThickness);
 
                 var p = new Paint
                 {
@@ -33,7 +39,8 @@ namespace BowlersBuddyXam.Droid.Renderers
                     AntiAlias = true
                 };
 
-                canvas.DrawRoundRect(new RectF(interior), (float) interior.Height()/2, (float) interior.Width()/2, p);
+                if(circ.Solid)
+                    canvas.DrawRoundRect(new RectF(interior), (float) interior.Height()/2, (float) interior.Width()/2, p);
 
                 p.Color = circ.StrokeColor.ToAndroid();
                 p.StrokeWidth = (float) circ.StrokeThickness;

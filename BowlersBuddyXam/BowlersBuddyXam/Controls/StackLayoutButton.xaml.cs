@@ -9,16 +9,16 @@ namespace BowlersBuddyXam.Controls
         {
             InitializeComponent();
 
-            var tgr = new TapGestureRecognizer();
-            tgr.SetBinding(TapGestureRecognizer.CommandProperty, "TapCommand");
+            //var tgr = new TapGestureRecognizer();
+            //tgr.SetBinding(TapGestureRecognizer.CommandProperty, "TapCommand");
             //tgr.Tapped += (s, e) =>
             //{
             //    // Handle the tap
             //    if (Tapped != null) this.Tapped(s, e);
             //};
 
-            this.ctrlIcon.GestureRecognizers.Add(tgr);
-            this.ctrlText.GestureRecognizers.Add(tgr);
+            //this.ctrlIcon.GestureRecognizers.Add(tgr);
+            //this.ctrlText.GestureRecognizers.Add(tgr);
         }
 
         public Color TextColor

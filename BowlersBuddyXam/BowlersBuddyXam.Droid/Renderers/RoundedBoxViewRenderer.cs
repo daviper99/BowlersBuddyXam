@@ -15,31 +15,37 @@ namespace BowlersBuddyXam.Droid.Renderers
             SetWillNotDraw(false);
         }
 
+        protected override void OnElementChanged(ElementChangedEventArgs<View> e)
+        {
+            base.OnElementChanged(e);
+            Invalidate();
+        }
+
         public override void Draw(Canvas canvas)
         {
-            var circ = (RoundedBoxView) Element;
+            var rec = (RoundedBoxView) Element;
 
-            if (circ.IsVisible)
+            if (rec.Visible)
             {
                 var rc = new Rect();
                 GetDrawingRect(rc);
 
                 var interior = rc;
-                interior.Inset((int) circ.StrokeThickness, (int) circ.StrokeThickness);
+                interior.Inset((int) rec.StrokeThickness, (int) rec.StrokeThickness);
 
                 var p = new Paint
                 {
-                    Color = circ.FillColor.ToAndroid(),
+                    Color = rec.FillColor.ToAndroid(),
                     AntiAlias = true
                 };
 
-                canvas.DrawRoundRect(new RectF(interior), (float) circ.CornerRadius, (float) circ.CornerRadius, p);
+                canvas.DrawRoundRect(new RectF(interior), (float) rec.CornerRadius, (float) rec.CornerRadius, p);
 
-                p.Color = circ.StrokeColor.ToAndroid();
-                p.StrokeWidth = (float) circ.StrokeThickness;
+                p.Color = rec.StrokeColor.ToAndroid();
+                p.StrokeWidth = (float) rec.StrokeThickness;
                 p.SetStyle(Paint.Style.Stroke);
 
-                canvas.DrawRoundRect(new RectF(rc), (float)circ.CornerRadius, (float)circ.CornerRadius, p);
+                canvas.DrawRoundRect(new RectF(rc), (float)rec.CornerRadius, (float)rec.CornerRadius, p);
             }
         }
     }
